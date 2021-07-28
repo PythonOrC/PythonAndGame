@@ -5,25 +5,36 @@ SCREEN_HEIGHT = 800
 SCREEN_TITLE = "Change Lanes"
 
 
+class Road:
+    def __init__(self):
+        self.image = arcade.Sprite("images/road.png")
+        self.image.center_x = SCREEN_WIDTH // 2
+        self.image.center_y = SCREEN_HEIGHT // 2
+
+
+class SmallCar:
+    def __init__(self):
+        self.image = arcade.Sprite("images/smallcar1.png")
+        self.image.center_x = SCREEN_WIDTH // 2
+        self.image.center_y = 100
+
+
 class MyCar(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
         self.setup()
 
     def setup(self):
-        self.road = arcade.Sprite("images/road.png")
-        self.road.center_x = 300
-        self.road.center_y = 400
-
+        # initialize the road
+        self.road = Road()
         # initialize the car
-        self.small_car = arcade.Sprite("images/smallcar1.png")
-        self.small_car.center_x = 300
-        self.small_car.center_y = 100
+        self.small_car = SmallCar()
 
     def on_draw(self):
         arcade.start_render()
-        self.road.draw()
-        self.small_car.draw()
+
+        self.road.image.draw()
+        self.small_car.image.draw()
 
     def on_update(self, delta_time):
         pass
